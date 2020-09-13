@@ -5,7 +5,7 @@
 * 计算阶乘
 * 汉诺塔
 * 递归模板
-’‘’python
+```python
 def recursion(level,param1,param2,...)
     #recursion terminator 递归终结条件
     if level > MAX_LEVEL:
@@ -19,7 +19,7 @@ def recursion(level,param1,param2,...)
     self.recursion(level+1,p1,...)
 
     #reverse the current level status if needed 清理当前层
-‘’‘python
+```python
 
 * 思维要点
     1. 不要人肉递归（最大误区）
