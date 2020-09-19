@@ -48,15 +48,14 @@ def recursion(level,param1,param2,...)
     3. 能够通过索引访问（index acceddible）
 * 代码模板
 ```Python
-# Python
 left, right = 0, len(array) - 1 
 while left <= right: 
-	  mid = (left + right) / 2 
-	  if array[mid] == target: 
-		    # find the target!! 
-		    break or return result 
-	  elif array[mid] < target: 
-		    left = mid + 1 
-	  else: 
-		    right = mid - 1
+    mid = (left + right) / 2 
+    if array[mid] == target: 
+        # find the target!! 
+        break or return result 
+    elif array[mid] < target: 
+        left = mid + 1 
+    else: 
+        right = mid - 1
 ```
