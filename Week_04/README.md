@@ -1,45 +1,83 @@
 ## 算法学习笔记-Week04
 
-### 递归 - 循环
-函数调用自身，通过函数体来进行的循环
-* 计算阶乘
-* 汉诺塔
-* 递归模板
-```python
-def recursion(level,param1,param2,...)
-    #recursion terminator 递归终结条件
-    if level > MAX_LEVEL:
-        process_result
-        return
-    
-    #process logic in current lvevl 处理当前层逻辑
-    process(levle,data...)
-    
-    #drill down 下探到下一层
-    self.recursion(level+1,p1,...)
+### 深度优先DFS和广度优先BFS
+* 树的定义
+```Python
+Class TreeNode():
+    def __init__(self,val):
+        self.val = val
+        self.left,self.right = None,None
+```
+* DFS代码模板
+```Python
+#与原递归一样的格式
+def dfs(node):
+    if node in visited: # terminator
+    # already visited 
+    return 
+	visited.add(node) 
+	# process current node here. 
+	... #logic here
+    dfs(node.left)
+    dfs(node.right)
+```
+```Python
+#Python
+visited = set() 
+def dfs(node, visited):
+    if node in visited: # terminator
+    # already visited 
+    return 
+	visited.add(node) 
+	# process current node here. 
+	...
+	for next_node in node.children(): 
+		if next_node not in visited: 
+			dfs(next_node, visited)
+```
+```Python
+#非递归写法--手动维护一个stack
+def DFS(self, tree): 
 
-    #reverse the current level status if needed 清理当前层
+	if tree.root is None: 
+		return [] 
+
+	visited, stack = [], [tree.root]
+
+	while stack: 
+		node = stack.pop() 
+		visited.add(node)
+
+		process (node) 
+		nodes = generate_related_nodes(node) 
+		stack.push(nodes) 
+
+	# other processing work 
+	...
+```
+* BFS代码模板
+水波纹、地震、人脑思维
+
+```Python
+def BFS(graph, start, end):
+    visited = set()
+	queue = [] 
+	queue.append([start]) 
+	while queue: 
+		node = queue.pop() 
+		visited.add(node)
+		process(node) 
+		nodes = generate_related_nodes(node) 
+		queue.push(nodes)
+	# other processing work 
+	...
 
 ```
 
-* 思维要点
-    1. 不要人肉递归（最大误区）
-    2. 找到最近最简方法，将其拆解成可重复解决的问题（重复子问题）
-    3. 数学归纳法思维
 
-### 分治 
-是一种特殊的递归，Divide & Conquer & Merge
-* 分解成多个子问题
-* 找重复性
-* 比递归模板增加一步:组合子结果
-```python
-    result = process_result(subresult1, subresult2, subresult3, ...)
-```
+### 贪心 - 
+* 
 
-### 回溯 - Backtracking
-是一种特殊的递归
-* 不断在每一层试错
-* 八皇后问题
 
 ### 二分查找
 * 前提
@@ -59,3 +97,4 @@ while left <= right:
     else: 
         right = mid - 1
 ```
+* 
